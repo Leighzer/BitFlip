@@ -102,10 +102,12 @@ Bridges are an idea of having one object similar to a head, that has not just on
 One possible performance increase would be to introduce multiple separate heads working in the same program, working on the same tape. One could treat each head as a thread, and parallelize a Bit Flip program. One problem would be overlapping heads modifying data, which head would get the last say, how would we avoid race conditions between heads. There would need to be rules in place that would lead to consistent program behavior with multiple heads.
 
 
-## More Conditional Instructions/Variations of vanilla instructions: ##
+## Instructions That Did Not Make The Cut ##
+
+### More Conditional Instructions/Variations of vanilla instructions: ###
 These instructions are instructions I thought about including, but decided not to in favor of keeping the language simple. The added c at the start of the instruction stands for conditional. These instructions I imagine could help drastically cut down how many head moves would be required in a program, at least I think.
 
-### Tape/Bucket/Flag instructions (Data operations): ###
+#### Tape/Bucket/Flag instructions (Data operations): ####
 ctoggle - if flag is true, flip the bit that the head is currently pointing at. else, do nothing
 
 cset <arg> - if flag is true, set the bit the head is currently pointing at to arg. else, do nothing
@@ -116,7 +118,12 @@ cwrite - if flag is true, write the bucket's binary value to the memory location
   
 ctest - if flag is true, set flag value to bucket && value @ head.
   
-### Moving the tape head: ###
+#### Moving the tape head: ####
 cright - if flag is true, move the head one index to the right. else, do nothing
 
 cleft - if flag is true, move the head one index to the left. else, do nothing
+
+### Other Instructions ###
+swap - set the value the head is pointing at to the bucket, and set the value of the bucket to the head, swapping their values.
+
+
