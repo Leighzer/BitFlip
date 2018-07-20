@@ -86,7 +86,7 @@ This is the initial language specification. Right now there is a very bare bones
 # Down the Road: Future Functionality For Bit Flip #
 
 ## I/O: ##
-Basic I/O:
+### Basic I/O: ###
 With the current version there is no I/O specificed, which is a large part of computation. The plan is to allow a Bit Flip program to load/copy any file into its tape, allow the program to modify the tape, and arbitrarily write the bits over the old file, or into a new file. 
 
 ## Dynamic Tape Creation: ##
@@ -107,11 +107,16 @@ These instructions are instructions I thought about including, but decided not t
 
 ### Tape/Bucket/Flag instructions (Data operations): ###
 ctoggle - if flag is true, flip the bit that the head is currently pointing at. else, do nothing
+
 cset <arg> - if flag is true, set the bit the head is currently pointing at to arg. else, do nothing
+  
 ccopy - if flag is true, copy the bit the head is pointing at to the bucket. else, do nothing
+  
 cwrite - if flag is true, write the bucket's binary value to the memory location the head is pointing at. else, do nothing
+  
 ctest - if flag is true, set flag value to bucket && value @ head.
   
 ### Moving the tape head: ###
 cright - if flag is true, move the head one index to the right. else, do nothing
+
 cleft - if flag is true, move the head one index to the left. else, do nothing
