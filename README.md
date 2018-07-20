@@ -42,6 +42,7 @@ There is a flag, this is a temporary storage that is used by conditional instruc
 # The Instruction Set:
 
 Tape/Bucket/Flag instructions (Data operations):
+
 toggle - flip the bit that the head is currently pointing at.
 
 set <arg> - set the bit the head is currently pointing at to arg.
@@ -52,7 +53,9 @@ write - write the bucket's binary value to the memory location the head is point
 
 test - set flag value to bucket && value @ head.
 
+
 Moving the tape head:
+
 right - move the head one index to the right
 
 left - move the head one index to the left
