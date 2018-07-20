@@ -43,25 +43,34 @@ There is a flag, this is a temporary storage that is used by conditional instruc
 
 Tape/Bucket/Flag instructions (Data operations):
 toggle - flip the bit that the head is currently pointing at.
+
 set <arg> - set the bit the head is currently pointing at to arg.
+  
 copy - copy the bit the head is pointing at to the bucket.
+
 write - write the bucket's binary value to the memory location the head is pointing at.
+
 test - set flag value to bucket && value @ head.
 
 Moving the tape head:
 right - move the head one index to the right
+
 left - move the head one index to the left
 
 Flow of execution/Jumping/Looping:
 jump <label> - jump flow of execution to label location in program
+  
 cjump <label> - if flag is true, jump flow of execution to label loaction in program, else fall through to next instruction
+  
 exit - close the program
 
 # Language Lexemes and Semantic Structures
 The language's statements follow these structures
 
 < instruction >;
+
 < instruction > < arg >;
+
 < label >:
 
 
