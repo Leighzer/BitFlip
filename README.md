@@ -45,7 +45,7 @@ Tape/Bucket/Flag instructions (Data operations):
 
 toggle - flip the bit that the head is currently pointing at.
 
-set <arg> - set the bit the head is currently pointing at to arg.
+set < arg > - set the bit the head is currently pointing at to arg.
   
 copy - copy the bit the head is pointing at to the bucket.
 
@@ -61,9 +61,9 @@ right - move the head one index to the right
 left - move the head one index to the left
 
 Flow of execution/Jumping/Looping:
-jump <label> - jump flow of execution to label location in program
+jump < label > - jump flow of execution to label location in program
   
-cjump <label> - if flag is true, jump flow of execution to label loaction in program, else fall through to next instruction
+cjump < label > - if flag is true, jump flow of execution to label loaction in program, else fall through to next instruction
   
 exit - close the program
 
