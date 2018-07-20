@@ -26,6 +26,7 @@ The target user of this language would be machines. Possible uses of Bit Flip is
 The structure of bit flip is the following.
 
 |0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|
+
                    ^      Head
                    U = 0  Bucket
                    F = 0  Flag
@@ -59,9 +60,9 @@ exit - close the program
 # Language Lexemes and Semantic Structures
 The language's statements follow these structures
 
-<instruction>;
-<instruction> <arg>;
-<label>:
+< instruction >;
+< instruction > < arg >;
+< label >:
 
 
 # What is currently being worked on:
