@@ -1,0 +1,26 @@
+//Test Bit Flip Program
+
+Top:
+
+tape[101010101010];
+
+
+Main:
+
+toggle;
+set[1];
+set[0];
+copy;
+write;
+
+right;
+test;
+left;
+
+
+
+cjump Main;
+jump Bottom;
+
+Bottom:
+exit;
