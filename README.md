@@ -73,9 +73,39 @@ The language's statements follow these structures
 
 < instruction >;
 
-< instruction > < arg >;
+< instruction > \[ < arg > \] ;
 
 < label >:
+
+< instruction >;//Comment
+
+< instruction > \[ < arg > \] ; //Comment
+
+< label >: //Comment
+
+//Comment
+
+Instructions are single word statements that perform some type of action.
+
+Args are binary numbers passed as parameters to instructions.
+
+Labels are named program locations that may be jumped to from anywhere in the program.
+
+### Each line of a Bit Flip program must follow the above structure, important notes being: ###
+
+Instructions end with a semicolon.
+
+There is only one instruction per line.
+
+Labels end with a regular colon.
+
+There is only one label per line.
+
+Comments only take one line, and immediately start after a double forward slash. (//)
+
+Args are delimited with square brackets [] and immediately must follow an instruction.
+
+Not all instructions take args.
 
 
 # What is currently being worked on: #
