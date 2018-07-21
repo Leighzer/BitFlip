@@ -45,13 +45,15 @@ There is a flag, this is a temporary storage that is used by conditional instruc
 
 toggle - flip the bit that the head is currently pointing at.
 
-set < arg > - set the bit the head is currently pointing at to arg.
+set \[ < arg > \] - set the bit the head is currently pointing at to arg.
   
 copy - copy the bit the head is pointing at to the bucket.
 
 write - write the bucket's binary value to the memory location the head is pointing at.
 
 test - set flag value to bucket && value @ head.
+
+tape \[ < arg > \] - initialize and use a new tape of size arg
 
 
 ## Moving the tape head: ##
@@ -106,6 +108,8 @@ Comments only take one line, and immediately start after a double forward slash.
 Args are delimited with square brackets [] and immediately must follow an instruction.
 
 Not all instructions take args.
+
+Indentation is not important to the compiler.
 
 
 # What is currently being worked on: #
