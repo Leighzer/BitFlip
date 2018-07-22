@@ -69,7 +69,7 @@ cjump < label > - if flag is true, jump flow of execution to label loaction in p
   
 exit - close the program
 
-# Language Lexemes and Semantic Structures #
+# Language Symbols And Structures: #
 The language's statements follow these structures
 
 < instruction >;
@@ -119,7 +119,7 @@ Indentation is not important to the compiler.
 
 # What is currently being worked on: #
 
-This is the initial language specification. Right now there is a very bare bones compiler in the works. The current plan of attack is to write a source to source compiler in a high level language that can take a Bit Flip program and translate it into an equivalent c++ program. Once there the compiler will invoke the c++ compiler (g++) and create the Bit Flip executable.
+This is the initial language specification. Right now there is a very bare bones compiler in the works. The current plan of attack is to write a source to source compiler in a high level language that can take a Bit Flip program and translate it into an equivalent c++ program. Once there the compiler will invoke the c++ compiler and create the Bit Flip executable.
 
 
 # Down the Road: Future Functionality For Bit Flip #
