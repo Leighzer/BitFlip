@@ -14,9 +14,9 @@ Bit Flip isn't supposed to be a human practical programming language. Bit Flip i
 
 The goal of the language is to supply a simple to read and understand instruction set that is capable of universal computation all while working at the binary level. At the end of the day computers just modify zeroes and ones, and the spirit of Bit Flip is to provide a language that would allow the user to work at the most fundamental level of information processing. Flipping Bits.
 
-The vision behind Bit Flip is the following. What if we wanted to create a bare bones machine that was turing complete? What if we didn't need to settle for being limited to addressing bytes and could address any single bit? What if we could modify/toggle/set/read singular addressable bits EXTREMELY EXTREMELY fast? Modern CPU clocks are around 4 ghz right now. What if a much simpler architecture could clock at signifcantly much higher rates? What if this could be faster than today's machines that process bytes with standard programs? What if the programmer using this machine didn't need all the syntactic sugar that typical humans need to code? Enter Bit Flip.
+The vision behind Bit Flip is the following. What if we wanted to create a bare bones machine that was turing complete? What if we didn't need to settle for being limited to addressing bytes and could address any single bit? What if we could modify/toggle/set/read singular addressable bits extremely fast? Modern CPU clocks are around 4 ghz right now. What if a much simpler architecture could clock at signifcantly higher rates? What if this could be faster than today's machines that process at least bytes with standard programs? What if the programmer using this machine didn't need all the syntactic sugar that typical humans need to code? Enter Bit Flip.
 
-The target user of this language would be machines. One possible use of Bit Flip is to introduce machines that are able to create Bit Flip programs. What if a machine could map the same set of inputs to the same set of outputs in more optimized fashion? They could create programs that have the same behaviors written by humans, all while hopefully being smaller in size, faster, and obfuscated. Intelligent enough AI wouldn't need all the syntactical sugar humans need. They would just need the absolute raw instructions to make programs. This language is at the highest granularity programming could take place, something a machine could take advantage of that a human couldn't. This language is definitely not claiming to be the absolute minimal language in existance. What it does have is the fact that the data processing element is essentially at the most fundamental level. Just flipping bits.
+The target user of this language would be machines. One possible use of Bit Flip is to introduce machines that are able to create Bit Flip programs. What if a machine could map the same set of inputs to the same set of outputs in a more optimized fashion? They could create programs that have the same behaviors written by humans, all while hopefully being smaller in size, faster, and obfuscated. Intelligent enough AI wouldn't need all the syntactical sugar humans need. They would just need the absolute raw instructions to make programs. This language is at the highest granularity programming could take place, something a machine could take advantage of that a human couldn't. This language is definitely not claiming to be the absolute minimal language in existance. What it does have is the fact that the data processing element is essentially at the most fundamental level. Just flipping bits.
 
 Please note that this is very much just speculation. There is definitely a reason modern computers have developed the way they have. This language is most definitely a turing tar pit for humans. With this note made, let's move on.
 
@@ -50,7 +50,7 @@ copy - copy the bit the head is pointing at to the bucket.
 
 write - write the bucket's binary value to the memory location the head is pointing at.
 
-test - set flag value to bucket && value @ head.
+test - set flag value to result of bucket && value @ head.
 
 tape \[ < arg > \] - initialize and use a new tape of size arg
 
@@ -94,7 +94,7 @@ Instruction - statements that perform some type of action.
 
 Bool - single binary digit passed as a parameter to an instruction.
 
-Arg - binary number passed as a parameter to  an instructions.
+Arg - binary number passed as a parameter to an instruction.
 
 Label - named program locations that may be jumped to from anywhere in the program.
 
