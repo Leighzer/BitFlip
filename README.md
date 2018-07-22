@@ -44,7 +44,7 @@ There is a flag, this is a temporary storage that is used by conditional instruc
 
 toggle - flip the bit that the head is currently pointing at.
 
-set \[ < arg > \] - set the bit the head is currently pointing at to arg.
+set \[ < bool > \] - set the bit the head is currently pointing at to bool.
   
 copy - copy the bit the head is pointing at to the bucket.
 
@@ -151,7 +151,7 @@ These instructions are instructions I thought about including, but decided not t
 #### Tape/Bucket/Flag instructions (Data operations): ####
 ctoggle - if flag is true, flip the bit that the head is currently pointing at. else, do nothing
 
-cset <arg> - if flag is true, set the bit the head is currently pointing at to arg. else, do nothing
+cset \[ < bool > \] - if flag is true, set the bit the head is currently pointing at to arg. else, do nothing
   
 ccopy - if flag is true, copy the bit the head is pointing at to the bucket. else, do nothing
   
