@@ -6,20 +6,19 @@ A language made for fun by Leighton Covington
 
 Bit Flip is a programming language geared towards manipulating data at the binary level with a minimal instruction set.
 
-Bit Flip is very similar to assembly language of today's machines. It is essentially assembly code for a virtual machine where all bits are addressable, and memory is no more complex than a simple tape of binary digits.
-
 Bit Flip is primarily inspired by the language Brain Fuck and other minimalist languages that are very simple in nature, and still turing complete. Bit Flip is also inspired by today's assembly languages for modern machines.
+
+Bit Flip is very similar to assembly language of today's machines. It is essentially assembly code where all bits are addressable/accessible, and memory is no more complex than a simple tape of binary digits.
 
 Bit Flip isn't supposed to be a human practical programming language. Bit Flip isn't meant to be a practical language with today's machines that are based on at least bytes.
 
-The goal of the language is to supply a simple to understand instruction set that is capable of universal computation all while working at the binary level. At the end of the day computers just change and modify zeroes and ones, and the spirit of Bit Flip is to provide a language that would allow the user to work at the most fundamental level of information processing. Flipping Bits.
+The goal of the language is to supply a simple to read and understand instruction set that is capable of universal computation all while working at the binary level. At the end of the day computers just modify zeroes and ones, and the spirit of Bit Flip is to provide a language that would allow the user to work at the most fundamental level of information processing. Flipping Bits.
 
-The vision behind Bit Flip is the following. What if we wanted to create a bare bones machine that was turing complete. What if we didn't need to settle for being limited to addressing bytes and could address any single bit. What if we could modify/toggle/set/read singular addressable bits EXTREMELY EXTREMELY fast. It is as simple as flipping a switch. What if this could be faster than today's machines that process bytes with standard programs. What if the programmer using this machine didn't need all the syntactic sugar that typical humans need to code. Enter Bit Flip.
+The vision behind Bit Flip is the following. What if we wanted to create a bare bones machine that was turing complete? What if we didn't need to settle for being limited to addressing bytes and could address any single bit? What if we could modify/toggle/set/read singular addressable bits EXTREMELY EXTREMELY fast? Modern CPU clocks are around 4 ghz right now. What if a much simpler architecture could clock at signifcantly much higher rates? What if this could be faster than today's machines that process bytes with standard programs? What if the programmer using this machine didn't need all the syntactic sugar that typical humans need to code? Enter Bit Flip.
 
-Please note that this is very much just speculation. There is definitely a reason modern computers have developed the way they have. If really any of the above what ifs are incorrect than the Bit Flip machine in practice wouldn't be very great. This language is most definitely a turing tar pit. With this note made, let's move on.
+The target user of this language would be machines. One possible use of Bit Flip is to introduce machines that are able to create Bit Flip programs. What if a machine could map the same set of inputs to the same set of outputs in more optimized fashion? They could create programs that have the same behaviors written by humans, all while hopefully being smaller in size, faster, and obfuscated. Intelligent enough AI wouldn't need all the syntactical sugar humans need. They would just need the absolute raw instructions to make programs. This language is at the highest granularity programming could take place, something a machine could take advantage of that a human couldn't. This language is definitely not claiming to be the absolute minimal language in existance. What it does have is the fact that the data processing element is essentially at the most fundamental level. Just flipping bits.
 
-The target user of this language would be machines. Possible uses of Bit Flip is we can create machines that are able to create Bit Flip programs that accomplish the same behaviors written by humans, all while hopefully being smaller in size, faster, and obfuscated. Intelligent enough AI wouldn't need all the syntactical sugar humans need. They would just need the absolute raw instructions to make programs. They could utilize languages with just one instructions for all of their programming needs. This is language is definitely not claiming to be the absolute minimal language in existance. What it does have is the fact that the data processing element is essentially the most fundamental. Just flipping bits.
-
+Please note that this is very much just speculation. There is definitely a reason modern computers have developed the way they have. This language is most definitely a turing tar pit for humans. With this note made, let's move on.
 
 # Structure of Bit Flip #
 
@@ -33,7 +32,7 @@ The structure of bit flip is the following.
 
 There is a tape of arbitrary length that holds binary digits. This is our working memory where we will perform data operations.
 
-There is a tape head, that points to a singular digit on our tape. It is commonly referred to as just head. This is what will be used to indicate what index of the tape we are currently working with. A head points to a singular index on a tape.
+There is a tape head, that points to a singular bit on our tape. It is commonly referred to as just head. This is what will be used to indicate what index of the tape we are currently working with. A head points to a singular index on a tape.
 
 There is a bucket, this is temporary storage like a binary clip board, that allows us to temporarily remember a value we copied from the tape, and to paste this saved value else where. The bucket is also indirectly a part of the conditional branching functionality of the language.
 
@@ -75,7 +74,11 @@ The language's statements follow these structures
 
 < instruction >;
 
+< instruction > \[ < bool > \] ;
+
 < instruction > \[ < arg > \] ;
+
+< instruction > < label > ;
 
 < label >:
 
@@ -87,13 +90,15 @@ The language's statements follow these structures
 
 //Comment
 
-Instructions are single word statements that perform some type of action.
+Instruction - statements that perform some type of action.
 
-Args are binary numbers passed as parameters to instructions.
+Bool - single binary digit passed as a parameter to an instruction.
 
-Labels are named program locations that may be jumped to from anywhere in the program.
+Arg - binary number passed as a parameter to  an instructions.
 
-### Each line of a Bit Flip program must follow the above structure, important notes being: ###
+Label - named program locations that may be jumped to from anywhere in the program.
+
+### Each line of a Bit Flip program must follow the above structure, important notes follow: ###
 
 Instructions end with a semicolon.
 
@@ -135,8 +140,10 @@ Bridges are an idea of having one object similar to a head, that has not just on
 ## Multiple Heads: ##
 One possible performance increase would be to introduce multiple separate heads working in the same program, working on the same tape. One could treat each head as a thread, and parallelize a Bit Flip program. One problem would be overlapping heads modifying data, which head would get the last say, how would we avoid race conditions between heads. There would need to be rules in place that would lead to consistent program behavior with multiple heads.
 
+## Bit Flip Virtual Machine Code: ##
+One way to decrease the size of saved Bit Flip source programs would be to map all instructions to machine form. So rather than having to store a multiple bytes per instruction to store the written out words we could create a machine code spec that would map to a numeric value. This could be very useful for extremely large machine generated bit flip programs. 
 
-## Instructions That Did Not Make The Cut ##
+## Instructions That Did Not Make The Cut: ##
 
 ### More Conditional Instructions/Variations of vanilla instructions: ###
 These instructions are instructions I thought about including, but decided not to in favor of keeping the language simple. The added c at the start of the instruction stands for conditional. These instructions I imagine could help drastically cut down how many head moves would be required in a program, at least I think.
@@ -157,7 +164,7 @@ cright - if flag is true, move the head one index to the right. else, do nothing
 
 cleft - if flag is true, move the head one index to the left. else, do nothing
 
-### Other Instructions ###
+### Other Instructions: ###
 swap - set the value the head is pointing at to the bucket, and set the value of the bucket to the head, swapping their values.
 
 
