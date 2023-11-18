@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace BitFlip.VM
+namespace BitFlip.VM.Library
 {
     // noting we currently don't have any array access/index checks for now
     public class BitFlipVirtualMachine
