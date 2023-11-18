@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BitFlip_VM
+namespace BitFlip.Assembler
 {
     class Program
     {
