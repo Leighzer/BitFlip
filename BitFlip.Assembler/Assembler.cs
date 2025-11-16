@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using BitFlip.VM.Library;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BitFlip.Asm
 {
@@ -23,8 +21,8 @@ namespace BitFlip.Asm
 
         public void Process(string[] args)
         {
-            var compileFlag = _configuration.GetValue<bool>("compile", false);
-            if (compileFlag)
+            var command = _configuration.GetValue<string>("command", string.Empty);
+            if (command == "compile")
             {
                 var sourceFilePath = _configuration.GetValue<string>("sourcefilepath", string.Empty);
                 if (string.IsNullOrWhiteSpace(sourceFilePath))
@@ -35,7 +33,9 @@ namespace BitFlip.Asm
 
                 var outputPath = _configuration.GetValue<string>("outputfilepath", "a.bitflipbc")!;
 
-                Assemble(sourceFilePath, outputPath);
+                byte[] program = Assemble(sourceFilePath, outputPath);
+
+                var bitFlipVirtualMachine = new BitFlipVirtualMachine(program);
             }
             else
             {
@@ -49,7 +49,7 @@ namespace BitFlip.Asm
 
             var machineCode = new List<byte>();
             var labelsToAddress = new Dictionary<string, int>();
-            
+
 
             string[] lines = sourceFileText.Split('\n');
 
@@ -76,11 +76,19 @@ namespace BitFlip.Asm
             foreach (string line in lines)
             {
                 string lineStrippedComment = StripComment(line).Trim();
-                if (!string.IsNullOrEmpty(lineStrippedComment) && !lineStrippedComment.EndsWith(";"))
+                if (!string.IsNullOrEmpty(lineStrippedComment) && !lineStrippedComment.EndsWith(LabelDelimiter))
                 {
                     if (lineStrippedComment.EndsWith(StatementDelimiter))
                     {
-                        string[] parts = lineStrippedComment.Split(' ');
+                        string[] parts;
+                        if (lineStrippedComment.StartsWith("tape["))
+                        {
+                            parts = lineStrippedComment.TrimEnd(';').Split(' ', '[', ']');
+                        }
+                        else
+                        {
+                            parts = lineStrippedComment.TrimEnd(';').Split(' ');
+                        }
                         string instruction = parts[0].ToLowerInvariant();
 
                         List<byte> instructionBytes = new List<byte>();
@@ -129,7 +137,7 @@ namespace BitFlip.Asm
                                 break;
                             case "tape":
                                 byte tapeInstructionByte = 0xb;
-                                int tapeAddress = labelsToAddress[parts[1]];
+                                int tapeAddress = int.Parse(parts[1]);
                                 byte[] fulltapeInstruction = new byte[5] { tapeInstructionByte, 0x0, 0x0, 0x0, 0x0 };
                                 Array.Copy(BitConverter.GetBytes(tapeAddress), 0, fulltapeInstruction, 1, 4);
                                 instructionBytes.AddRange(fulltapeInstruction);
@@ -140,8 +148,6 @@ namespace BitFlip.Asm
                         {
                             machineCode.AddRange(instructionBytes);
                         }
-
-
                     }
                 }
             }

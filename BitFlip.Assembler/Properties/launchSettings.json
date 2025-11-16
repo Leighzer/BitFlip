@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BitFlip.Asm": {
+      "commandName": "Project",
+      "commandLineArgs": "--c compile --p \"L:/My-Code/GitHub/BitFlip/Example-Bit-Flip-Program\""
+    }
+  }
+}

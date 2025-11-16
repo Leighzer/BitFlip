@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace BitFlip.Asm
 {
@@ -13,7 +12,7 @@ namespace BitFlip.Asm
         {
             { "--c", "command" },
             { "--p", "sourcefilepath" },
-            { "--0", "outputfilepath" }
+            { "--o", "outputfilepath" }
         };
 
         public static void Main(string[] args)

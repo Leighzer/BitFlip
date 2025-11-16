@@ -2,9 +2,6 @@
 
 Top:
 
-tape[101010101010];
-
-
 Main:
 
 toggle;
@@ -13,14 +10,16 @@ set[0];
 copy;
 write;
 
-right;
 test;
+right;
 left;
 
+tape[256];
 
 
-cjump Main;
+
 jump Bottom;
+cjump Main;
 
 Bottom:
 exit;

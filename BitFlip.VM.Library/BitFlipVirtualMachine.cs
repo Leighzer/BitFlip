@@ -15,11 +15,28 @@ namespace BitFlip.VM.Library
         private bool _flag { get; set; } = false;
         private bool _isDone { get; set; } = false;
 
+        public BitFlipVirtualMachine(byte[] program)
+        {
+            _memory = program;
+        }
+
+        private void IncrementInstructionPointerStandardInstruction()
+        {
+            _ip++;
+        }
+
+        private void IncrementInstructionPointerIntegerParamInstruction()
+        {
+            // increment 1 for instruction code and 4 for the int param for the instruction
+            _ip += 5;
+        }
+
         // toggle - flip the bit that the head is currently pointing at.
         private void Toggle()
         {
             // TODO perhaps throw a specific exception if out of BitArray bounds
             _tape[_headPosition] = !_tape[_headPosition];
+            IncrementInstructionPointerStandardInstruction();
         }
 
         // set [ < bool > ] - set the bit the head is currently pointing at to bool (inlineValue).
@@ -27,36 +44,42 @@ namespace BitFlip.VM.Library
         private void Set(bool inlineValue)
         {
             _tape[_headPosition] = inlineValue;
+            IncrementInstructionPointerStandardInstruction();
         }
 
         // copy - copy the bit the head is pointing at to the bucket.
         private void Copy()
         {
             _bucket = _tape[_headPosition];
+            IncrementInstructionPointerStandardInstruction();
         }
 
         // write - write the bucket's binary value to the memory location the head is pointing at.
         private void Write()
         {
             _tape[_headPosition] = _bucket;
+            IncrementInstructionPointerStandardInstruction();
         }
 
         // test - set flag value to result of bucket && value @ head.
         private void Test()
         {
             _flag = _tape[_headPosition] && _bucket;
+            IncrementInstructionPointerStandardInstruction();
         }
 
         // right - move the head one index to the right
         private void Right()
         {
             _headPosition++;
+            IncrementInstructionPointerStandardInstruction();
         }
 
         // left - move the head one index to the left
         private void Left()
         {
             _headPosition--;
+            IncrementInstructionPointerStandardInstruction();
         }
 
         // jump < label > - jump flow of execution to label location in program
@@ -78,6 +101,7 @@ namespace BitFlip.VM.Library
         private void Tape(int newTapeSize)
         {
             _tape = new BitArray(new bool[newTapeSize]);
+            IncrementInstructionPointerStandardInstruction();
         }
 
         // exit - close the program
